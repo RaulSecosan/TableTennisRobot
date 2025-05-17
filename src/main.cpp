@@ -794,7 +794,7 @@ void handleMotorFWD() {
 void handleMotorBWD() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
-  analogWrite(ENA, 135);
+  analogWrite(ENA, 150);
   server.send(200, "text/plain", "Motor inapoi");
 }
 
@@ -819,7 +819,7 @@ void handleMotorSetSpeed() {
 void handleMotor2FWD() {
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
-  analogWrite(ENB, 150);
+  analogWrite(ENB, 220);
   server.send(200, "text/plain", "Motor 2 inainte");
 }
 
@@ -1179,13 +1179,13 @@ void loop() {
       handleMotorBWD(); //Colector de mingi
     } else if (code == 0xFF629D) {
       handleMotorStop(); 
-    } else if (code == 0xFFE21D) {
-      handleStart0(); //Ball feeder
-    }else if (code == 0xFF22DD) {
-      handleStop();
     } else if (code == 0xFF02FD) {
-      handleMotor2FWD(); //Tun
+      handleStart0(); //Ball feeder
     }else if (code == 0xFFC23D) {
+      handleStop();
+    } else if (code == 0xFFE21D) {
+      handleMotor2FWD(); //Tun
+    }else if (code == 0xFF22DD) {
       handleMotor2Stop();
     } else if (code ==  0xFFE01F) {
       handleServo2_osc_start(); //Oscilatie
